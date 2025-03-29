@@ -1,0 +1,10 @@
+{% if weather_data %}
+    <h5 style="text-align: left;">City:</h5>
+    <h1 style="text-decoration: underline;">{{weather_data.city}}</h1>
+    <div style="text-align: center;  display: flex;justify-content: space-around;">
+    <h2 class="temperature-color" style="{% if weather_data.temperature_greater_than_10 %}color: rgb(227, 84, 118);{% else %}color: #07a5a5;{% endif %}">{{weather_data.temperature}}   </h2>
+    <h2><button class="tempbutton" onclick="temp_convert({{weather_data.temperature}}, this)">&#8451;</button></h2>
+    </div>
+    <p style="text-align: center;">({{weather_data.description}})</p>
+    <img src="https://openweathermap.org/img/wn/{{weather_data.icon}}.png" alt="{{weather_data.description}}" >
+{% endif %}

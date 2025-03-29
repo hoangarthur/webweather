@@ -1,0 +1,46 @@
+{% extends "pages/base.html" %}
+{% block title %}Project{% endblock %}
+{% block content %}
+<section style=" display: flex;
+                flex-wrap: wrap;
+                gap: 20px;">
+{% for proj in projs %}
+    <h4>{{proj.date|date:"m/d/Y"}}
+    <div class="main-container">    
+        <figure>
+          <img
+            src="{{ proj.image.url }}" alt="{{ proj.id}}" class="main-image">
+          <figurecaption>
+            <div class="skill-main-text">
+              <img
+                src="{{ proj.image.url }}" alt="{{ proj.id}}" class="thumbnail-image">
+              <h4>"{{proj.title}}"</h4>
+            </div>
+  
+            <!-- sub content -->
+            <div class="skill-sub-text">
+              <p>{{proj.description}}</p>
+            </div>
+          </figurecaption>
+      </div>
+{% endfor %}
+<br>
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">_ previous </a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}"> next_ </a>
+          <a href="?page={{ page_obj.paginator.num_pages }}"> last</a>
+      {% endif %}
+  </span>
+</div>
+</section>
+{% endblock %}

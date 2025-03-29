@@ -1,0 +1,8 @@
+{% extends "pages/base.html" %}
+{% block title %}{{projs.title}}{% endblock %}
+{% block content %}
+<h6>{{projs.date}}</h6>
+<p>{{projs.body|safe|linebreaks}}</p>
+<img src="{{projs.image.url}}" style="max-width: 500px; width:100%;">
+{% endblock %}
+
